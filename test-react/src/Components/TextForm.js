@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function TextForm(props) {
+    const [text, setText] = useState("Enter Text");
+
+    const handleUpCase = ()=>{
+        console.log("clicked");
+        let newtext = text.toUpperCase();
+        setText(newtext);
+    }
+
+    const handleChange = (event)=>{
+        console.log("changed");
+        setText(event.target.value);
+
+    }
   return (
     <>
       <div className="form">
@@ -13,8 +26,10 @@ export default function TextForm(props) {
             className="form-control"
             id="exampleFormControlTextarea1"
             rows={5}
-            defaultValue={""}
+            value={text}
+            onChange={handleChange}
           />
+          <div className="btn btn-primary my-2" onClick={handleUpCase}>Change Text</div>
         </div>
       </div>
     </>
