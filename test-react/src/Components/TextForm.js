@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 export default function TextForm(props) {
-    const [text, setText] = useState("Enter Text");
+    const [text, setText] = useState("");
 
     const handleUpCase = ()=>{
         console.log("clicked");
@@ -9,18 +9,29 @@ export default function TextForm(props) {
         setText(newtext);
     }
 
+    const handleLoCase = ()=>{
+        console.log("clicked");
+        let newtext = text.toLowerCase();
+        setText(newtext);
+    }
+
+    const handleReset = ()=>{
+        console.log("clicked");
+        let newtext = "";
+        setText(newtext);
+    }
+
     const handleChange = (event)=>{
         console.log("changed");
         setText(event.target.value);
-
     }
   return (
     <>
       <div className="form">
-        <h1>{props.heading}</h1>
+        <h1 className='my-2'>{props.heading}</h1>
         <div className="mb-3">
           <label htmlFor="exampleFormControlTextarea1" className="form-label">
-            Example textarea
+            TextArea
           </label>
           <textarea
             className="form-control"
@@ -28,9 +39,19 @@ export default function TextForm(props) {
             rows={5}
             value={text}
             onChange={handleChange}
+            placeholder='Enter your Text'
           />
-          <div className="btn btn-primary my-2" onClick={handleUpCase}>Change Text</div>
+          <div className="btn btn-primary my-2 mx-2" onClick={handleUpCase}>Change To UpperCase</div>
+          <div className="btn btn-primary my-2 mx-2" onClick={handleLoCase}>Change To LowerCase</div>
+          <div className="btn btn-primary my-2 mx-2" onClick={handleReset}>Clear</div>
         </div>
+      </div>
+      <div className="summary">
+        <h2>This is Summary</h2>
+        <p>{text.length} Character and {text.split(" ").length} Words</p>
+
+        <h2>Preview</h2>
+        <p>{text}</p>
       </div>
     </>
   );
