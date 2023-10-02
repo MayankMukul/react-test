@@ -30,8 +30,8 @@ export default function TextForm(props) {
   const [btnText,setbtnText]=useState("Enable Dark Mode");
   const [themeStyle, setthemeStyle]= useState(
     {
-      backgroundColor: "black",
-      color: "white",
+      backgroundColor: "white",
+      color: "black",
     }
   )
   const toggleTheme=()=>{
@@ -51,11 +51,11 @@ export default function TextForm(props) {
   }
 
   const toggleDarkMode = ()=>{
-    setbtnText("Enable Light Mode");
+    setbtnText("Enable Dark Mode");
   }
 
   const toggleLightMode = ()=>{
-    setbtnText("Enable Dark Mode");
+    setbtnText("Enable Light Mode");
   }
 
   return (
