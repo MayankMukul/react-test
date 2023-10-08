@@ -4,25 +4,28 @@ export default function TextForm(props) {
     const [text, setText] = useState("");
 
     const handleUpCase = ()=>{
-        console.log("clicked");
+        // console.log("clicked");
         let newtext = text.toUpperCase();
         setText(newtext);
+        props.messageUpdate("Changed to UpperCase");
     }
 
     const handleLoCase = ()=>{
-        console.log("clicked");
+        // console.log("clicked");
         let newtext = text.toLowerCase();
         setText(newtext);
+        props.messageUpdate("Changed to LowerCase");
     }
 
     const handleReset = ()=>{
-        console.log("clicked");
+        // console.log("clicked");
         let newtext = "";
         setText(newtext);
+        props.messageUpdate("Cleared");
     }
 
     const handleChange = (event)=>{
-        console.log("changed");
+        // console.log("changed");
         setText(event.target.value);
     }
 
