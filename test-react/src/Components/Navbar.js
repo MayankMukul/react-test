@@ -1,10 +1,28 @@
 
 
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Navbar(props) {
+
+  const[greenmode, setgreenmode]=useState(false);
+
+
+  function toggleGreen(){
+    if(greenmode==false){
+      document.body.style.backgroundColor="green";
+      setgreenmode(true);
+    }else {
+      document.body.style.backgroundColor="white"
+      setgreenmode(false);
+    }
+  }
   return (
-    <nav className={`navbar navbar-expand-lg bg-${(props.mode===false)?"dark":"light"}`} data-bs-theme={`${(props.mode===false)?"dark":"light"}`}>
+    <nav
+      className={`navbar navbar-expand-lg bg-${
+        props.mode === false ? "dark" : "light"
+      }`}
+      data-bs-theme={`${props.mode === false ? "dark" : "light"}`}
+    >
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           TextUtils
@@ -29,20 +47,47 @@ export default function Navbar(props) {
             </li>
           </ul>
           <div className="form-check form-switch mx-3">
-
+           <li>
+            <ul>
             <input
-              className="form-check-input"
+                className="form-check-input m-4 "
+                type="checkbox"
+                role="switch"
+                id="toggleGreen"
+                onClick={() => {
+                  toggleGreen();
+                }}
+              />
+              <label
+                className={`form-check-label m-4 text-${
+                  props.mode === false ? "white" : "black"
+                }`}
+                htmlFor="toggleGreen"
+              >
+                Enable GreenMode
+              </label>
+            </ul>
+            <ul>
+            <input
+              className="form-check-input m-4 "
               type="checkbox"
               role="switch"
               id="flexSwitchCheckDefault"
               onClick={props.togglemode}
             />
             <label
-              className={`form-check-label text-${(props.mode===false)?"white":"black"}`}
-              htmlFor="flexSwitchCheckDefault" 
+              className={`form-check-label m-4 text-${
+                props.mode === false ? "white" : "black"
+              }`}
+              htmlFor="flexSwitchCheckDefault"
             >
               Enable DarkMode
             </label>
+            </ul>
+           </li>
+              
+      
+            
           </div>
 
           <form className="d-flex" role="search">
