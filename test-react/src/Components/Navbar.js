@@ -45,10 +45,15 @@ export default function Navbar(props) {
                 Home
               </a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link active" aria-current="page" href="#">
+                About
+              </a>
+            </li>
           </ul>
           <div className="form-check form-switch mx-3">
-           <li>
-            <ul>
+           <li className="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul className="nav-item">
             <input
                 className="form-check-input m-4 "
                 type="checkbox"
@@ -67,7 +72,7 @@ export default function Navbar(props) {
                 Enable GreenMode
               </label>
             </ul>
-            <ul>
+            <ul className="nav-item">
             <input
               className="form-check-input m-4 "
               type="checkbox"
