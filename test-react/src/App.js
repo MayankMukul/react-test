@@ -1,9 +1,11 @@
 // import logo from './logo.svg';
 import Alert from './Alert';
 import './App.css';
+import About from './Components/About';
 import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm';
 import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 
 function App() {
   const [mode, setmode]=useState(true);
@@ -35,11 +37,21 @@ function App() {
   // disableMsg();
   return (
     <>
-      <Navbar mode={mode} togglemode={togglemode}></Navbar>
+    <Router>
+    <Navbar mode={mode} togglemode={togglemode}></Navbar>
       <Alert message={message}></Alert>
       <div className="container" >
-        <TextForm heading="TextUtils" mode={mode} messageUpdate={messageUpdate}></TextForm>
+        <Routes>
+          <Route path="/">
+              <TextForm heading="TextUtils" mode={mode} messageUpdate={messageUpdate}></TextForm>
+          </Route>
+          <Route path="/about">
+              <About/>
+          </Route>
+        </Routes>
       </div>
+    </Router>
+      
     </>
   );
 }
